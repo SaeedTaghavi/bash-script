@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#echo "The number of arguments passed to the script is: $#"
+
+###Deleting all files in a folder except files that contains a pattern
+###	find . \! -name $pattern -delete
+###	find . \! -name $pattern -print0 | xargs --null rm 
+
+if [ $# -ne 1 ]; then
+    echo "The number of arguments passed is incorrect,"
+    echo "please enter just one argument"
+    exit 1
+fi
+
+VAR1="*"
+pattern="${VAR1}$1${VAR1}"
+#echo "$pattern"
+find . \! -name $pattern -delete
